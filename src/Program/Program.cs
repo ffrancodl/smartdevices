@@ -5,7 +5,7 @@
 //--------------------------------------------------------------------------------
 
 using System;
-using ClassLibrary;
+using AdapterExample;
 
 namespace ConsoleApplication
 {
@@ -19,9 +19,11 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
-            var train = new Train();
-            train.StartEngines();
-            Console.WriteLine("Hello World!");
+            Plug plug = new Plug("1");
+            ISmartDevice Adapter = new Adapter (plug);
+            Adapter.On();
+            Adapter.Off();
+            Console.WriteLine(Adapter.GetStatus());
         }
     }
 }
