@@ -1,7 +1,8 @@
 
 using System;
 
-namespace AdapterExample;
+namespace AdapterExample
+
 {
     public class Adapter: ISmartDevice
     {
@@ -11,17 +12,29 @@ namespace AdapterExample;
         }
 
         public Plug plug {get; set;}
-        public void ToggleStatus()
+        public void On()
         {
-            if (this.plug.GetStatus().Equals("off"))
+            if (this.plug.GetStatus().Equals("on"))
             {
-            this.plug.ToggleStatus();
-            Console.WriteLine("The Plug is on");
+                this.plug.ToggleStatus();
+                Console.WriteLine("plug is on");
             }
             else
             {
-            this.plug.ToggleStatus();
-            Console.WriteLine("The Plug is off");
+                Console.WriteLine("plug is off");
+            }
+        }
+
+        public void Off()
+        {
+            if (this.plug.GetStatus().Equals("off"))
+            {
+                this.plug.ToggleStatus();
+                Console.WriteLine("plug is off");
+            }
+            else
+            {
+                Console.WriteLine("plug is on");
             }
         }
         public string GetStatus()
